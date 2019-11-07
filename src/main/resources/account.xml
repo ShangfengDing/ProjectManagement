@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- - This file is included by the struts.xml file as an example - of how
+	to break up the configuration file into multiple files. -->
+<struts>
+    <!-- 根目录 / -->
+    <package name="account" namespace="/account" extends="default">
+        <action name="login" class="com.free4lab.freeRT.action.login.LoginAction">
+            <result name="success" type="redirect">${redirect_url}</result>
+            <result name="input">/error/error.jsp</result>
+            <result name="error">/error/error.jsp</result>
+        </action>
+        <action name="landing" class="com.free4lab.freeRT.action.login.LandingAction">
+            <result name="success" type="redirect">${redirect_url}</result>
+            <result name="input">/error/error.jsp</result>
+            <result name="error">/error/error.jsp</result>
+        </action>
+        <action name="loginout" class="com.free4lab.freeRT.action.login.LoginStatusAction" method="loginout">
+            <result name="success" type="json">
+                <param name="excludeNullProperties">true</param>
+            </result>
+            <result name="error" type="json">
+                <param name="excludeNullProperties">true</param>
+            </result>
+        </action>
+        <action name="numberOfReport" method="reportNumber" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="root">numOfReport</param>
+            </result>
+        </action>
+        <action name="numberOfTask" method="taskNumber" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="root">numOfTask</param>
+            </result>
+        </action>
+        <action name="numberOfProject"  method="projectNumber" class="com.free4lab.freeRT.action.ProjectAction">
+            <result name="success" type="json">
+                <param name="root">numberOfProject</param>
+            </result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- - This file is included by the struts.xml file as an example - of how
+	to break up the configuration file into multiple files. -->
+<struts>
+    <!-- 根目录 / -->
+    <package name="project" namespace="/project" extends="default">
+        <action name="new" method="newProject" class="com.free4lab.freeRT.action.ProjectAction">
+            <result name="success">/views/project/NewProject.jsp</result>
+        </action>
+        <action name="listPeople" method="userAll" class="com.free4lab.freeRT.action.MyProjectAction">
+            <result name="success">/views/modal/select_people_model_people_list.jsp</result>
+        </action>
+
+        <action name="findUser" method="searchUser" class="com.free4lab.freeRT.action.MyProjectAction">
+            <result name="success">/views/modal/search_people_model_people_list.jsp</result>
+        </action>
+        <action name="updateProject" method="updateProject" class="com.free4lab.freeRT.action.ProjectAction">
+            <result name="success" type="json">
+                <param name="root">checkpro</param>
+            </result>
+        </action>
+        <action name="createProject" method="createProject" class="com.free4lab.freeRT.action.ProjectAction">
+            <result name="success" type="json">
+                <param name="root">check</param>
+            </result>
+            <result name="error"></result>
+        </action>
+        <action name="deleteUser" method="deleteUser" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">flag</param>
+            </result>
+        </action>
+        <action name="setLeave" method="setLeave" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">flag</param>
+            </result>
+        </action>
+        <action name="setOnProject" method="setOnProject" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">flag</param>
+            </result>
+        </action>
+        <action name="addAdmin" method="addAdmin" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">flag</param>
+            </result>
+        </action>
+        <action name="cancelAdmin" method="cancelAdmin" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">flag</param>
+            </result>
+        </action>
+        <action name="addUser" method="addRelation" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">flag</param>
+            </result>
+        </action>
+        <action name="deleteProject" method="deleteProject" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">flag</param>
+            </result>
+        </action>
+
+        <action name="judgeAdmin"  class="com.free4lab.freeRT.action.AuthenticationAction">
+            <result name="success" type="json">
+                <param name="root">judge</param>
+            </result>
+        </action>
+        <action name="uploadAvatar" method="uploadAvatar" class="com.free4lab.freeRT.action.FileAction" >
+            <result type="json"> </result>
+        </action>
+        <action name="updateProjectAvatar" method="updateProjectAvatar" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">avatar</param>
+            </result>
+        </action>
+        <action name="SearchProjectByName" method="searchProjectByName" class="com.free4lab.freeRT.action.MyProjectAction">
+            <result name="success">/views/project/searchproject.jsp</result>
+        </action>
+        <action name="SearchProjectByIdAndName" method="searchProjectByIdAndName" class="com.free4lab.freeRT.action.MyProjectAction">
+            <result name="success">/views/project/searchproject.jsp</result>
+        </action>
+    </package>
+</struts>

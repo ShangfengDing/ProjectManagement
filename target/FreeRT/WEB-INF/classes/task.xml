@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- - This file is included by the struts.xml file as an example - of how
+	to break up the configuration file into multiple files. -->
+<struts>
+    <!-- 根目录 / -->
+    <package name="task" namespace="/task" extends="default">
+        <action name="newtask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success">/views/task/NewTask.jsp</result>
+        </action>
+        <action name="listMytask" method="listMytask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success">/views/task/MyTask.jsp</result>
+        </action>
+        <action name="newtaskModal" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success">/views/modal/NewTaskModal.jsp</result>
+        </action>
+        <action name="viewtask" method="listProjectTask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success">/views/project/ProjectTask.jsp</result>
+            <!--<result name="error">/error/member.jsp</result>-->
+        </action>
+        <action name="taskflow" method="listProjectTask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success">/views/infoflow/infoflow_task.jsp</result>
+            <result name="error">/error/member.jsp</result>
+        </action>
+        <action name="edittask" method="FindTask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success">/views/modal/TaskEditModal.jsp</result>
+        </action>
+        <action name="getMem" method="GetMember" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="includeProperties">userList.*,projectName.*</param>
+            </result>
+        </action>
+        <action name="updatetask" method="UpdateTask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="root">msg</param>
+            </result>
+        </action>
+        <action name="deletetask" method="DeleteTask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="root">msg</param>
+            </result>
+        </action>
+        <action name="projecttask" method="ListAliveTaskByProject" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="list">taskList</param>
+            </result>
+        </action>
+        <action name="mytask" method="ListTaskByUserAndProject" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="list">taskMemberList</param>
+            </result>
+        </action>
+        <action name="addtask" method="AddTask" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="root">msg</param>
+            </result>
+        </action>
+        <action name="changestate" method="ChangeTaskState" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="root">msg</param>
+            </result>
+        </action>
+        <action name="mailReminder" method="mailToUser" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="root">sendMailException</param>
+            </result>
+        </action>
+        <action name="ListTaskByState" method="ListTaskByState" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="includeProperties">taskList.*,pageSum.*</param>
+            </result>
+        </action>
+        <action name="ListFinishTaskByTime" method="ListFinishTaskByTime" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+            </result>
+        </action>
+        <action name="ProjectTask" method="viewProjectTask" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success">/views/project/ProjectTask.jsp</result>
+        </action>
+
+        <action name="CountTaskByState" method="CountTaskByState" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success" type="json">
+                <param name="root">numOfTask</param>
+            </result>
+        </action>
+        <action name="uploadTaskPic" method="upload" class="com.free4lab.freeRT.action.FileAction">
+            <result name="success" type="json">
+                <param name="includeProperties">fileFileName,uuid</param>
+            </result>
+        </action>
+        <action name="deleteTaskPic" method="delete" class="com.free4lab.freeRT.action.FileAction">
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+            <result name="error" type="json">
+                <param name="root">false</param>
+            </result>
+        </action>
+        <action name="taskContent"  class="com.free4lab.freeRT.action.AuthenticationAction">
+            <result name="success">/views/task/task_content.jsp</result>
+        </action>
+        <action name="getExistPicList" class="com.free4lab.freeRT.action.TaskAction">
+                <result name="success" type="json"></result>
+        </action>
+    </package>
+</struts>

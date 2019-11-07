@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="struts_blank" version="2.4"
+         xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <display-name>Archetype Created Web Application</display-name>
+
+
+    <filter>
+        <description>在特定的URL，检查用户是否登录，查看session["user"]是否存在</description>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.free4lab.freeRT.filter.LoginFilter</filter-class>
+        <init-param>
+            <description>权限不够时转向的路径</description>
+            <param-name>failPage</param-name>
+            <param-value>/</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/home/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/project/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/task/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/report/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/chat/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+        <!-- 后两句以保证在error_page的struts2能正常工作,包括tomcat在内的一些容器需要加上这两句,jetty是正常的。 -->
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+    <!-- 可用于配置session时间，解决新建周报时编辑时间过长，account登出的问题-->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>/</welcome-file>
+    </welcome-file-list>
+
+</web-app>

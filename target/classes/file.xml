@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="file" namespace="/file" extends="default">
+        <action name="viewfile" method="viewfile" class="com.free4lab.freeRT.action.ProjectProfileAction">
+            <result name="success">/views/profile/ProjectProfile.jsp</result>
+        </action>
+        <action name="listFile" method="listFile" class="com.free4lab.freeRT.action.ProjectProfileAction">
+            <result name="success">/views/profile/show_profile.jsp</result>
+        </action>
+        <action name="uploadFile" method="saveUrl" class="com.free4lab.freeRT.action.ProjectProfileAction">
+            <result name="success">/views/profile/show_profile.jsp</result>
+        </action>
+        <action name="searchFile" method="searchFile" class="com.free4lab.freeRT.action.ProjectProfileAction">
+            <result name="success">/views/profile/show_profile.jsp</result>
+        </action>
+        <action name="deleteFile" method="deleteFile" class="com.free4lab.freeRT.action.ProjectProfileAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+        <action name="editFile" method="editFile" class="com.free4lab.freeRT.action.ProjectProfileAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+        <action name="starFile" method="starFile" class="com.free4lab.freeRT.action.ProjectProfileAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+    </package>
+</struts>

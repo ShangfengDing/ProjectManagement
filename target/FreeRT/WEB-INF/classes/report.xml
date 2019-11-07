@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- - This file is included by the struts.xml file as an example - of how
+	to break up the configuration file into multiple files. -->
+<struts>
+    <package name="report" namespace="/report" extends="default">
+
+        <action name="show" method="showReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/show_report.jsp</result>
+            <result name="error">/error/member.jsp</result>
+        </action>
+        <action name="previousReport" method="previousReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="includeProperties">report,report.id</param>
+            </result>
+        </action>
+        <action name="nextReport" method="nextReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="includeProperties">report,report.id</param>
+            </result>
+        </action>
+
+        <action name="listReportComment" method="listReportComment" class="com.free4lab.freeRT.action.ReportCommentAction">
+            <result name="success">/views/report/show_report_comment.jsp</result>
+        </action>
+        <action name="listReportCommentIgnoreOperation" method="listReportCommentIgnoreOperation" class="com.free4lab.freeRT.action.ReportCommentAction">
+            <result name="success">/views/report/show_report_comment.jsp</result>
+        </action>
+        <action name="saveReportComment" method="saveReportComment" class="com.free4lab.freeRT.action.ReportCommentAction">
+            <result name="success" type="json">
+                <param name="includeProperties">reportComment,reportComment.id,sendMailException</param>
+            </result>
+        </action>
+        <action name="deleteReportComment" method="deleteReportComment" class="com.free4lab.freeRT.action.ReportCommentAction">
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+
+        <action name="uploadImage" method="uploadImage" class="com.free4lab.freeRT.action.SimditorAction">
+            <result name="success" type="json">
+                <param name="includeProperties">success,file_path</param>
+            </result>
+        </action>
+        <action name="uploadAttachment" method="upload" class="com.free4lab.freeRT.action.FileAction">
+            <result name="success" type="json">
+                <param name="includeProperties">fileFileName,uuid</param>
+            </result>
+        </action>
+        <action name="deleteAttachment" method="delete" class="com.free4lab.freeRT.action.FileAction">
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+            <result name="error" type="json">
+                <param name="root">false</param>
+            </result>
+        </action>
+
+        <action name="new" method="newReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/new_report.jsp</result>
+        </action>
+        <action name="saveReport" method="saveReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="includeProperties">report,report.id</param>
+            </result>
+        </action>
+        <action name="submitReport" method="submitReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="includeProperties">report,report.id,sendMailException</param>
+            </result>
+        </action>
+        <action name="submitDraftReport" method="submitDraftReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="includeProperties">sendMailException</param>
+            </result>
+        </action>
+
+        <action name="edit" method="editReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success">/views/report/new_report.jsp</result>
+        </action>
+        <action name="updateReport" method="updateReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+
+        <action name="trash" method="trashReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+        <action name="revert" method="revertReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+        <action name="delete" method="deleteReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="error">/error/error.jsp</result>
+            <result name="success" type="json">
+                <param name="root">true</param>
+            </result>
+        </action>
+
+        <action name="userReport" method="userReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/project/project_toolbar.jsp</result>
+        </action>
+        <action name="listUserReport" method="listUserReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/report_content.jsp</result>
+        </action>
+
+        <action name="managerReport" method="managerReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/project/project_toolbar.jsp</result>
+        </action>
+        <action name="listManagerReport" method="listManagerReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/report_content.jsp</result>
+        </action>
+
+        <action name="project" method="projectReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/project/project_report.jsp</result>
+            <result name="error">/error/member.jsp</result>
+        </action>
+        <action name="reportflow" method="projectReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/infoflow/infoflow_report.jsp</result>
+            <result name="error">/error/member.jsp</result>
+        </action>
+        <action name="listProjectReport" method="listProjectReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/report_content.jsp</result>
+        </action>
+
+        <action name="listTrashReport" method="listTrashReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/report_content.jsp</result>
+        </action>
+
+        <action name="listDraftReport" method="listDraftReport" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/report_content.jsp</result>
+        </action>
+
+        <!--<action name="listWeek" method="listWeek" class="com.free4lab.freeRT.action.ReportAction">-->
+            <!--<result name="success" type="json">-->
+                <!--<param name="root">searchWeekList</param>-->
+            <!--</result>-->
+        <!--</action>-->
+
+        <action name="listProject" method="userReportNotLeave" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/modal/select_project_model_project_list.jsp</result>
+        </action>
+
+        <action name="searchProject" method="searchProject" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/modal/select_project_model_project_list.jsp</result>
+        </action>
+
+        <action name="refreshTime" method="refreshTime" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json"></result>
+        </action>
+
+        <action name="findAll" method="findAll" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="root">reportList</param>
+            </result>
+        </action>
+
+        <action name="listUserReportForCalendar" method="listUserReportForCalendar" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="root">reportList</param>
+            </result>
+        </action>
+
+        <action name="listManagerReportForCalendar" method="listManagerReportForCalendar" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success" type="json">
+                <param name="root">reportList</param>
+            </result>
+        </action>
+
+        <action name="calendar" method="calendar" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">/views/report/report_calendar.jsp</result>
+        </action>
+
+    </package>
+</struts>

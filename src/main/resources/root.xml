@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- - This file is included by the struts.xml file as an example - of how
+	to break up the configuration file into multiple files. -->
+<struts>
+    <!-- 根目录 / -->
+    <package name="root" namespace="/" extends="default">
+        <action name="" class="">
+            <result name="success" type="redirectAction">home</result>
+        </action>
+        <action name="home" class="com.free4lab.freeRT.action.MyProjectAction">
+            <result name="success">views/project/MyProject.jsp</result>
+        </action>
+        <action name="info" method="viewProject" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success">views/infoflow/InfoFlow.jsp</result>
+        </action>
+        <action name="project" class="com.free4lab.freeRT.action.MyProjectAction">
+            <result name="success">views/project/MyProject.jsp</result>
+        </action>
+        <action name="task" class="com.free4lab.freeRT.action.TaskAction">
+            <result name="success">views/task/MyTask.jsp</result>
+        </action>
+        <action name="report" class="com.free4lab.freeRT.action.ReportAction">
+            <result name="success">views/report/my_report.jsp</result>
+        </action>
+        <action name="chat" method="viewChatProject" class="com.free4lab.freeRT.action.ChatAction">
+            <result name="success">views/instantmessage/my_message.jsp</result>
+            <!--<result name="error">views/instantmessage/my_message.jsp</result>-->
+        </action>
+        <action name="editproject"  class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success">views/project/ProjectEdit.jsp</result>
+            <result name="error">/error/member.jsp</result>
+            <result name="wrong">/error/error.jsp</result>
+        </action>
+        <action name="memberflow"  class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success">views/infoflow/infoflow_member.jsp</result>
+            <result name="error">/error/member.jsp</result>
+            <result name="wrong">/error/error.jsp</result>
+        </action>
+        <action name="surveyflow"  class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success">views/infoflow/infoflow_survey.jsp</result>
+            <result name="error">/error/member.jsp</result>
+            <result name="wrong">/error/error.jsp</result>
+        </action>
+        <action name="InformationResult" method="InformationResult" class="com.free4lab.freeRT.action.ProjectAction">
+            <result name="success" type="json">
+                <param name="root">InformationResult</param>
+            </result>
+        </action>
+        <action name="getdynamic" method="getDynamic" class="com.free4lab.freeRT.action.ProjectAdminAction">
+            <result name="success" type="json">
+                <param name="includeProperties">logList.*,page,endpage</param>
+            </result>
+        </action>
+
+    </package>
+</struts>

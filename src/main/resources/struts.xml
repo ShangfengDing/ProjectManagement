@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- - This file is included by the struts.xml file as an example - of how
+	to break up the configuration file into multiple files. -->
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- <constant name="struts.ui.templateDir" value="WEB-INF/template/" /> -->
+    <!-- 开发阶段，设置为开发模式 -->
+    <constant name="struts.devMode" value="false" />
+    <!--拦截没有后缀的URL,如/ /hello /user/ -->
+    <constant name="struts.action.extension" value="," />
+    <!-- 限制上传限制大小 ，改成20M -->
+    <constant name="struts.multipart.maxSize" value="20971520" />
+
+    <constant name="struts.action.excludePattern" value="/ueditor/jsp/controller.jsp" />
+
+    <package name="default" extends="struts-default" abstract="true" >
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult" />
+        </result-types>
+
+        <!-- 当没有对应action时，返回404页面 -->
+        <default-action-ref name="404" />
+
+        <default-class-ref class="com.opensymphony.xwork2.ActionSupport" />
+
+        <global-exception-mappings>
+            <exception-mapping result="error" exception="java.lang.Exception" />
+        </global-exception-mappings>
+
+        <action name="404">
+            <result>/error/404.jsp</result>
+        </action>
+        <action name="error">
+            <result>/error/500.jsp</result>
+        </action>
+
+    </package>
+
+
+
+    <!-- root目录 / -->
+    <include file="root.xml" />
+    <!-- account目录 -->
+    <include file="account.xml" />
+    <!-- resource目录 /resource -->
+    <include file="report.xml" />
+    <!-- group目录/group -->
+    <include file="task.xml" />
+    <include file="account.xml" />
+    <include file="project.xml" />
+    <include file="log.xml"/>
+    <include file="user.xml" />
+    <include file="file.xml"/>
+    <include file="message.xml"/>
+</struts>

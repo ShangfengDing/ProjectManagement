@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="message" namespace="/message" extends="default ">
+        <action name="group" method="projectNameAjax" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success">/views/instantmessage/group_message.jsp</result>
+            <result name="error">/error/member.jsp</result>
+        </action>
+        <action name="currentMessage" method="currentMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success">/views/instantmessage/show_message.jsp</result>
+        </action>
+        <action name="historyMessage" method="historyMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success">/views/instantmessage/show_message.jsp</result>
+        </action>
+        <action name="latestMessage" method="latestMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+            </result>
+        </action>
+        <action name="earlierMessage" method="earlierMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+            </result>
+        </action>
+        <action name="saveMessage" method="saveMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+                <param name="includeProperties">saveResult</param>
+            </result>
+        </action>
+        <action name="deleteMessage" method="deleteMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+                <param name="includeProperties">deleteResult</param>
+            </result>
+        </action>
+        <action name="editMessage" method="editMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+                <param name="includeProperties">updateResult</param>
+            </result>
+        </action>
+        <action name="likeIt" method="likeIt" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+                <param name="includeProperties">result,sumNum</param>
+            </result>
+            <result name="error" type="json">
+                <param name="includeProperties">result,sumNum</param>
+            </result>
+        </action>
+        <action name="commentMessage" method="commentMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+                <param name="includeProperties">commentResult</param>
+            </result>
+        </action>
+        <action name="starit" method="starMessage" class="com.free4lab.freeRT.action.MessageAction">
+            <result type="json"></result>
+        </action>
+        <action name="likelist" method="likeList" class="com.free4lab.freeRT.action.MessageAction">
+            <result type="json"></result>
+        </action>
+        <action name="showComment" method="showComment" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success">
+                /views/instantmessage/_comment.jsp
+            </result>
+        </action>
+        <action name="countComment" method="countComment" class="com.free4lab.freeRT.action.MessageAction">
+            <result name="success" type="json">
+                <param name="includeProperties">commentCount</param>
+            </result>
+        </action>
+    </package>
+</struts>
